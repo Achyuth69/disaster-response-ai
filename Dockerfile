@@ -21,8 +21,6 @@ COPY run_api.py demo.py main.py ./
 RUN mkdir -p output checkpoints faiss_index logs && \
     useradd -m -u 1000 appuser && chown -R appuser:appuser /app
 USER appuser
-HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-    CMD curl -f http://localhost:${PORT:-8000}/api/health || exit 1
 EXPOSE 8000
-# Railway/Render inject $PORT — run_api.py reads it automatically
-CMD ["python", "run_api.py", "--host", "0.0.0.0", "--prod"]
+# Use shell form so $PORT env var is expanded by the shell
+CMD python run_api.py --host 0.0.0.0 --prod
