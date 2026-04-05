@@ -1763,16 +1763,31 @@ async def generate_sitrep(session_token: str):
         raise HTTPException(status_code=503, detail="GROQ_API_KEY not configured")
 
     from agents.llm_client import LLMClient
+    from agents.situation_report import _fallback_sitrep, _fallback_press, _fallback_social
     llm = LLMClient(
         primary_provider="groq",
         primary_model=os.getenv("PRIMARY_MODEL", "llama-3.3-70b-versatile"),
         primary_key=primary_key,
     )
 
-    # Run LLM calls in thread pool — prevents blocking the async event loop
+    # Run in thread pool with 50s timeout — always returns something
     import asyncio as _aio
     loop = _aio.get_running_loop()
-    result = await loop.run_in_executor(None, _gen_sitrep, llm, context)
+    try:
+        result = await _aio.wait_for(
+            loop.run_in_executor(None, _gen_sitrep, llm, context),
+            timeout=50.0
+        )
+    except (_aio.TimeoutError, Exception) as e:
+        # LLM timed out or failed — use template fallback, always works
+        result = {
+            "sitrep": _fallback_sitrep(context),
+            "press_briefing": _fallback_press(context),
+            "social_media": _fallback_social(context),
+            "generated_at": datetime.utcnow().isoformat(),
+            "error": f"LLM timeout — template report generated ({type(e).__name__})",
+        }
+
     result["session_token"] = session_token
     result["context"] = context
     return result
