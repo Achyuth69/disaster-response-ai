@@ -1,8 +1,8 @@
-# Environment
+# Secrets — NEVER commit these
 .env
 *.env
 
-# Python
+# Python cache
 __pycache__/
 *.pyc
 *.pyo
@@ -11,9 +11,8 @@ __pycache__/
 *.egg-info/
 dist/
 build/
-.eggs/
 
-# Data (too large for git)
+# Runtime data — auto-generated, not needed in repo
 faiss_index/
 checkpoints/
 output/
@@ -22,13 +21,20 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
+$null
 
 # IDE
 .vscode/
 .idea/
+.kiro/
 *.swp
 
 # Test artifacts
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Video/large files
+*.mp4
+*.avi
+*.mov
