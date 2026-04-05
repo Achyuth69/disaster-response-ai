@@ -2,9 +2,9 @@
 agents/gdacs_service.py — Global Disaster Intelligence.
 
 Fetches REAL active disasters from multiple free sources:
-1. GDACS RSS (gdacs.org) — primary
+1. GDACS RSS (gdacs.org) — primary, real-time
 2. ReliefWeb API (reliefweb.int) — fallback, always works from cloud
-3. Static recent data — last resort fallback
+3. Static current-era data — last resort fallback
 """
 from __future__ import annotations
 import json
@@ -12,7 +12,7 @@ import urllib.request
 import urllib.parse
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import datetime
 
 
 @dataclass
@@ -41,9 +41,36 @@ SEVERITY_COLORS = {
     "Green": "#00ff88", "Orange": "#ff6600", "Red": "#ff2020",
 }
 
+# Country → approximate coordinates for ReliefWeb fallback
+_COUNTRY_COORDS = {
+    "Afghanistan": (33.9, 67.7), "Bangladesh": (23.7, 90.4),
+    "Brazil": (-14.2, -51.9), "China": (35.9, 104.2),
+    "Colombia": (4.6, -74.1), "Ethiopia": (9.1, 40.5),
+    "India": (20.6, 78.9), "Indonesia": (-0.8, 113.9),
+    "Japan": (36.2, 138.3), "Kenya": (-0.0, 37.9),
+    "Mexico": (23.6, -102.6), "Mozambique": (-18.7, 35.5),
+    "Myanmar": (21.9, 95.9), "Nepal": (28.4, 84.1),
+    "Nigeria": (9.1, 8.7), "Pakistan": (30.4, 69.3),
+    "Peru": (-9.2, -75.0), "Philippines": (12.9, 121.8),
+    "Somalia": (5.2, 46.2), "South Sudan": (6.9, 31.3),
+    "Sudan": (12.9, 30.2), "Syria": (34.8, 38.9),
+    "Turkey": (38.9, 35.2), "Uganda": (1.4, 32.3),
+    "USA": (37.1, -95.7), "Vietnam": (14.1, 108.3),
+    "Yemen": (15.6, 48.5), "Zimbabwe": (-19.0, 29.2),
+    "Greece": (39.1, 21.8), "Italy": (41.9, 12.6),
+    "Iran": (32.4, 53.7), "Iraq": (33.2, 43.7),
+    "Haiti": (18.9, -72.3), "Honduras": (15.2, -86.2),
+    "Guatemala": (15.8, -90.2), "Ecuador": (-1.8, -78.2),
+    "Bolivia": (-16.3, -63.6), "Chile": (-35.7, -71.5),
+    "Australia": (-25.3, 133.8), "New Zealand": (-40.9, 174.9),
+    "Fiji": (-17.7, 178.1), "Vanuatu": (-15.4, 166.9),
+    "Papua New Guinea": (-6.3, 143.9), "Solomon Islands": (-9.6, 160.2),
+    "Tonga": (-21.2, -175.2), "Samoa": (-13.8, -172.1),
+}
+
 
 def _fetch_gdacs() -> list[GlobalDisaster]:
-    """Try GDACS RSS feed."""
+    """Try GDACS RSS feed — primary source."""
     disasters = []
     try:
         req = urllib.request.Request(
@@ -96,7 +123,8 @@ def _fetch_gdacs() -> list[GlobalDisaster]:
                     event_id=event_id or f"gdacs_{len(disasters)}",
                     event_type=GDACS_TYPE_MAP.get(event_type, event_type.lower() or "unknown"),
                     title=title, country=country,
-                    severity=severity_str, severity_score=sev_map.get(severity_str, 1.0),
+                    severity=severity_str,
+                    severity_score=sev_map.get(severity_str, 1.0),
                     lat=lat, lon=lon,
                     date=pub_date[:25] if pub_date else "",
                     url=link, affected=affected,
@@ -104,16 +132,18 @@ def _fetch_gdacs() -> list[GlobalDisaster]:
                 ))
             except Exception:
                 continue
+
+        print(f"  [GDACS] Fetched {len(disasters)} disasters")
     except Exception as e:
-        print(f"  [GDACS] Primary feed failed: {e.__class__.__name__}: {str(e)[:60]}")
+        print(f"  [GDACS] Failed: {e.__class__.__name__}: {str(e)[:80]}")
 
     return disasters
 
 
 def _fetch_reliefweb() -> list[GlobalDisaster]:
     """
-    Fetch from ReliefWeb API — always accessible from cloud servers.
-    Free, no API key, returns recent disaster reports.
+    ReliefWeb API — UN's official disaster database.
+    Always accessible from cloud servers. Free, no API key.
     """
     disasters = []
     try:
@@ -123,7 +153,7 @@ def _fetch_reliefweb() -> list[GlobalDisaster]:
             "filter": {
                 "field": "type.name",
                 "value": ["Flood", "Earthquake", "Cyclone", "Tsunami",
-                          "Wildfire", "Landslide", "Drought", "Volcano"]
+                          "Wild Fire", "Landslide", "Drought", "Volcano"]
             },
             "fields": {
                 "include": ["title", "date", "country", "type",
@@ -141,28 +171,10 @@ def _fetch_reliefweb() -> list[GlobalDisaster]:
         with urllib.request.urlopen(req, timeout=10) as resp:
             data = json.loads(resp.read())
 
-        # Country → approximate coordinates
-        COUNTRY_COORDS = {
-            "Afghanistan": (33.9, 67.7), "Bangladesh": (23.7, 90.4),
-            "Brazil": (-14.2, -51.9), "China": (35.9, 104.2),
-            "Colombia": (4.6, -74.1), "Ethiopia": (9.1, 40.5),
-            "India": (20.6, 78.9), "Indonesia": (-0.8, 113.9),
-            "Japan": (36.2, 138.3), "Kenya": (-0.0, 37.9),
-            "Mexico": (23.6, -102.6), "Mozambique": (-18.7, 35.5),
-            "Myanmar": (21.9, 95.9), "Nepal": (28.4, 84.1),
-            "Nigeria": (9.1, 8.7), "Pakistan": (30.4, 69.3),
-            "Peru": (-9.2, -75.0), "Philippines": (12.9, 121.8),
-            "Somalia": (5.2, 46.2), "South Sudan": (6.9, 31.3),
-            "Sudan": (12.9, 30.2), "Syria": (34.8, 38.9),
-            "Turkey": (38.9, 35.2), "Uganda": (1.4, 32.3),
-            "USA": (37.1, -95.7), "Vietnam": (14.1, 108.3),
-            "Yemen": (15.6, 48.5), "Zimbabwe": (-19.0, 29.2),
-        }
-
         TYPE_MAP = {
             "Flood": "flood", "Earthquake": "earthquake", "Cyclone": "cyclone",
-            "Tsunami": "tsunami", "Wildfire": "wildfire", "Landslide": "landslide",
-            "Drought": "drought", "Volcano": "volcano",
+            "Tsunami": "tsunami", "Wild Fire": "wildfire", "Wildfire": "wildfire",
+            "Landslide": "landslide", "Drought": "drought", "Volcano": "volcano",
         }
 
         for item in data.get("data", []):
@@ -171,28 +183,19 @@ def _fetch_reliefweb() -> list[GlobalDisaster]:
             if not title:
                 continue
 
-            # Get country and coords
             countries = f.get("country", [])
             country_name = countries[0].get("name", "Unknown") if countries else "Unknown"
-            coords = COUNTRY_COORDS.get(country_name, None)
-            if not coords:
-                # Try primary_country
-                pc = f.get("primary_country", {})
-                country_name = pc.get("name", country_name) if pc else country_name
-                coords = COUNTRY_COORDS.get(country_name, (0.0, 0.0))
+            coords = _COUNTRY_COORDS.get(country_name, (0.0, 0.0))
 
-            # Get type
             types = f.get("type", [])
             dis_type = types[0].get("name", "unknown") if types else "unknown"
             event_type = TYPE_MAP.get(dis_type, dis_type.lower())
 
-            # Severity based on status
             status = f.get("status", "ongoing")
             severity = "Red" if status == "alert" else "Orange" if status == "ongoing" else "Green"
 
             date_info = f.get("date", {})
             date_str = date_info.get("created", "")[:10] if date_info else ""
-
             url = f.get("url", "https://reliefweb.int")
 
             disasters.append(GlobalDisaster(
@@ -209,17 +212,15 @@ def _fetch_reliefweb() -> list[GlobalDisaster]:
                 description="",
             ))
 
+        print(f"  [ReliefWeb] Fetched {len(disasters)} disasters")
     except Exception as e:
-        print(f"  [ReliefWeb] Failed: {e.__class__.__name__}: {str(e)[:60]}")
+        print(f"  [ReliefWeb] Failed: {e.__class__.__name__}: {str(e)[:80]}")
 
     return disasters
 
 
 def _current_fallback() -> list[GlobalDisaster]:
-    """
-    Static fallback with realistic current-era disasters.
-    Used only when both GDACS and ReliefWeb are unreachable.
-    """
+    """Static fallback with realistic current-era disasters."""
     today = datetime.utcnow().strftime("%Y-%m-%d")
     return [
         GlobalDisaster("eq_001", "earthquake", "M6.4 Earthquake — Eastern Turkey", "Turkey",
@@ -242,28 +243,30 @@ def _current_fallback() -> list[GlobalDisaster]:
                        "Red", 3.0, 5.2, 46.2, today, "https://gdacs.org", 500000),
         GlobalDisaster("tc_002", "cyclone", "Tropical Storm — Philippines", "Philippines",
                        "Orange", 2.0, 12.9, 121.8, today, "https://gdacs.org", 60000),
+        GlobalDisaster("eq_003", "earthquake", "M6.1 Earthquake — Indonesia", "Indonesia",
+                       "Orange", 2.0, -0.8, 113.9, today, "https://gdacs.org", 25000),
+        GlobalDisaster("fl_004", "flood", "Coastal Flooding — Vietnam", "Vietnam",
+                       "Orange", 2.0, 14.1, 108.3, today, "https://gdacs.org", 40000),
     ]
 
 
 def fetch_global_disasters() -> list[GlobalDisaster]:
     """
-    Fetch real active disasters — tries multiple sources in order.
-    1. GDACS RSS (primary — real-time)
-    2. ReliefWeb API (fallback — always works from cloud)
-    3. Static current-era data (last resort)
+    Fetch real active disasters — tries multiple sources in order:
+    1. GDACS RSS (real-time, may be blocked on some cloud providers)
+    2. ReliefWeb API (UN database, always works from cloud)
+    3. Static current-era fallback (always works)
     """
     # Try GDACS first
     disasters = _fetch_gdacs()
     if disasters:
-        print(f"  [GDACS] Fetched {len(disasters)} disasters from GDACS")
         return disasters[:50]
 
     # Try ReliefWeb
     disasters = _fetch_reliefweb()
     if disasters:
-        print(f"  [ReliefWeb] Fetched {len(disasters)} disasters from ReliefWeb")
         return disasters[:50]
 
-    # Last resort — static fallback
-    print("  [GlobalDisasters] Both sources failed — using static fallback")
+    # Last resort
+    print("  [GlobalDisasters] Both APIs failed — using static fallback")
     return _current_fallback()
