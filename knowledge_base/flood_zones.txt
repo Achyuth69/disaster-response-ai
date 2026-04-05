@@ -1,0 +1,121 @@
+HYDERABAD FLOOD ZONE AND RISK ASSESSMENT DATA
+==============================================
+
+FLOOD RISK CLASSIFICATION
+--------------------------
+Zone A (EXTREME RISK): Inundation within 2 hours of heavy rainfall (>100mm/hr)
+Zone B (HIGH RISK): Inundation within 6 hours of sustained rainfall (>50mm/hr)
+Zone C (MEDIUM RISK): Inundation possible during prolonged rainfall (>30mm/hr for 12+ hours)
+Zone D (LOW RISK): Flooding unlikely except in extreme events (>200mm/24hr)
+
+ZONE A — EXTREME FLOOD RISK AREAS
+------------------------------------
+1. Dilsukhnagar (Moosarambagh area)
+   - Lowest elevation in city: 478–485m
+   - Population: 180,000
+   - Historical floods: 2000, 2005, 2009, 2020 (worst: 2020, 3m inundation)
+   - Drainage capacity: 15mm/hr (severely inadequate)
+   - Evacuation time required: 90 minutes minimum
+
+2. Amberpet / Tarnaka Low-lying Areas
+   - Elevation: 488–495m
+   - Population: 120,000
+   - Musi River overflow risk: HIGH when gauge > 6m
+   - Key vulnerable sites: Amberpet slums, Tarnaka railway colony
+
+3. Malkajgiri Nala Zones
+   - Elevation: 495–505m
+   - Population: 95,000
+   - Nala (drainage channel) overflow risk: HIGH
+   - Blocked drainage points: 12 identified
+
+4. Mehdipatnam / Tolichowki
+   - Elevation: 485–500m
+   - Population: 200,000
+   - Mir Alam Tank overflow risk: MEDIUM-HIGH
+   - Underpass flooding: Confirmed at 30mm/hr rainfall
+
+5. LB Nagar / Saroornagar
+   - Elevation: 480–498m
+   - Population: 250,000
+   - Saroornagar Lake overflow risk: HIGH
+   - Last major flood: 2020 (2.5m inundation, 15 deaths)
+
+ZONE B — HIGH FLOOD RISK AREAS
+--------------------------------
+6. Khairatabad / Masab Tank
+   - Elevation: 490–510m
+   - Population: 150,000
+   - Hussain Sagar overflow risk: MEDIUM
+   - Masab Tank (historic water body, now urban): Overflow at 50mm/hr
+
+7. Uppal / Boduppal
+   - Elevation: 490–510m
+   - Population: 180,000
+   - Industrial drainage overflow risk: HIGH
+   - Nala blockages: 8 identified
+
+8. Secunderabad Cantonment Low Areas
+   - Elevation: 505–515m
+   - Population: 80,000
+   - Hussain Sagar overflow risk: LOW-MEDIUM
+
+ZONE C — MEDIUM FLOOD RISK AREAS
+----------------------------------
+9. Kukatpally / KPHB
+   - Elevation: 500–520m
+   - Population: 300,000
+   - Recommended as staging/relief area
+
+10. Malkajgiri Elevated Areas
+    - Elevation: 510–525m
+    - Population: 60,000
+
+ZONE D — LOW FLOOD RISK AREAS (SAFE ZONES / RELIEF CAMPS)
+-----------------------------------------------------------
+11. Banjara Hills
+    - Elevation: 580–620m
+    - Recommended: Relief camp location
+
+12. Jubilee Hills
+    - Elevation: 570–600m
+    - Recommended: Medical staging area
+
+13. Begumpet
+    - Elevation: 540–560m
+    - Recommended: Command center, helipad operations
+
+MUSI RIVER FLOOD STAGES
+------------------------
+Normal: 0–3m gauge level
+Watch: 3–5m gauge level (monitor closely)
+Warning: 5–6.5m gauge level (prepare evacuation)
+Danger: 6.5–8m gauge level (mandatory evacuation of Zone A)
+Extreme Danger: >8m gauge level (Zone A + B evacuation, bridge closures)
+
+HISTORICAL FLOOD DATA
+----------------------
+2000 Flood: 3m inundation in Dilsukhnagar, 50 deaths, 100,000 displaced
+2005 Flood: 2m inundation, 30 deaths, 75,000 displaced
+2009 Flood: 1.5m inundation, 15 deaths, 40,000 displaced
+2020 Flood (worst in 100 years): 3.5m inundation in Zone A, 50 deaths, 200,000 displaced
+  - Trigger: 190mm rainfall in 24 hours + Osman Sagar release
+  - Response time: 6 hours to full deployment (too slow)
+  - Lesson: Pre-position boats in Zone A before monsoon peak
+
+DRAINAGE INFRASTRUCTURE
+------------------------
+Total storm drains: 1,847 km
+Functional capacity: 35mm/hr (design standard)
+Current effective capacity: 22mm/hr (due to encroachment and silting)
+Pumping stations: 47 (12 non-functional as of last audit)
+Critical pump stations: Dilsukhnagar (2 pumps), Mehdipatnam (3 pumps), LB Nagar (2 pumps)
+
+RELIEF CAMP LOCATIONS
+----------------------
+Camp 1: Kukatpally Stadium — Capacity: 5,000 persons
+Camp 2: Secunderabad Parade Ground — Capacity: 10,000 persons
+Camp 3: Banjara Hills Community Hall — Capacity: 2,000 persons
+Camp 4: Uppal Stadium — Capacity: 8,000 persons
+Camp 5: BHEL Township Ground — Capacity: 6,000 persons
+Camp 6: Shamshabad Airport Relief Zone — Capacity: 15,000 persons

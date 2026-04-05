@@ -1,0 +1,91 @@
+HYDERABAD HOSPITAL AND MEDICAL FACILITY DATA
+=============================================
+
+TIER-1 GOVERNMENT HOSPITALS (Major Trauma & Emergency)
+--------------------------------------------------------
+1. Osmania General Hospital
+   Address: Afzalgunj, Hyderabad - 500012
+   Coordinates: 17.3850°N, 78.4744°E
+   Beds: 1,200 | ICU: 80 | Emergency: 24/7
+   Distance from Musi River: 0.8 km (HIGH FLOOD RISK)
+   Specialties: Trauma, Burns, Neurology, Cardiology
+   Backup Power: Yes (72-hour generator)
+   Helipad: Yes
+
+2. Gandhi Hospital (Secunderabad)
+   Address: Musheerabad, Secunderabad - 500003
+   Coordinates: 17.4399°N, 78.4983°E
+   Beds: 1,500 | ICU: 120 | Emergency: 24/7
+   Distance from flood zones: 3.2 km (MEDIUM RISK)
+   Specialties: General Surgery, Orthopedics, Pediatrics
+   Backup Power: Yes (96-hour generator)
+   Helipad: Yes
+
+3. Niloufer Hospital (Children's)
+   Address: Red Hills, Hyderabad - 500004
+   Coordinates: 17.4050°N, 78.4744°E
+   Beds: 900 | Pediatric ICU: 60 | Emergency: 24/7
+   Distance from flood zones: 1.5 km (HIGH RISK)
+   Specialties: Pediatrics, Neonatology
+   Backup Power: Yes (48-hour generator)
+
+4. Fever Hospital (Infectious Disease)
+   Address: Nallakunta, Hyderabad - 500044
+   Coordinates: 17.4167°N, 78.4833°E
+   Beds: 400 | Isolation: 80 | Emergency: 24/7
+   Distance from flood zones: 2.1 km (MEDIUM RISK)
+   Specialties: Infectious Disease, Flood-related illness
+
+TIER-2 GOVERNMENT HOSPITALS
+-----------------------------
+5. Area Hospital, LB Nagar
+   Address: LB Nagar, Hyderabad - 500074
+   Beds: 300 | Emergency: 24/7
+   Distance from flood zones: 0.5 km (VERY HIGH RISK — may be inaccessible)
+
+6. Area Hospital, Kukatpally
+   Address: KPHB Colony, Kukatpally - 500072
+   Beds: 250 | Emergency: 24/7
+   Distance from flood zones: 2.8 km (LOW RISK — recommended staging area)
+
+7. Area Hospital, Malkajgiri
+   Address: Malkajgiri - 500047
+   Beds: 200 | Emergency: 24/7
+   Distance from flood zones: 1.8 km (MEDIUM RISK)
+
+PRIVATE HOSPITALS (Emergency Capacity)
+----------------------------------------
+8. Apollo Hospitals, Jubilee Hills
+   Address: Film Nagar, Jubilee Hills - 500033
+   Coordinates: 17.4239°N, 78.4072°E
+   Beds: 700 | ICU: 100 | Emergency: 24/7
+   Distance from flood zones: 8.5 km (LOW RISK — safe staging)
+   Helipad: Yes
+
+9. KIMS Hospital, Secunderabad
+   Address: Minister Road, Secunderabad - 500003
+   Beds: 1,000 | ICU: 150 | Emergency: 24/7
+   Distance from flood zones: 3.5 km (LOW RISK)
+
+10. Yashoda Hospital, Malakpet
+    Address: Malakpet - 500036
+    Beds: 500 | ICU: 60 | Emergency: 24/7
+    Distance from flood zones: 1.2 km (HIGH RISK)
+
+MEDICAL SUPPLY DEPOTS
+----------------------
+SDRF Medical Depot, Begumpet: 10,000 medical kits, 500 stretchers, 200 oxygen cylinders
+GHMC Emergency Store, Kukatpally: 5,000 medical kits, water purification tablets
+Red Cross Depot, Secunderabad: 3,000 first aid kits, blood bags (O+, A+)
+
+BLOOD BANKS (24/7)
+-------------------
+Osmania General Hospital Blood Bank: All groups available
+Gandhi Hospital Blood Bank: All groups available
+Rotary Blood Bank, Himayatnagar: O+, A+, B+ available
+
+AMBULANCE SERVICES
+-------------------
+108 Emergency: 200 ambulances citywide
+GHMC Disaster Ambulances: 50 dedicated flood-response vehicles (high-clearance)
+Private: 300+ ambulances (Apollo, KIMS, Yashoda networks)

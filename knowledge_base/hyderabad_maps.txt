@@ -1,0 +1,68 @@
+HYDERABAD GEOGRAPHIC AND INFRASTRUCTURE DATA
+============================================
+
+DISTRICT OVERVIEW
+-----------------
+Hyderabad is divided into 16 districts across the Greater Hyderabad Municipal Corporation (GHMC).
+Key districts prone to flooding: Khairatabad, Secunderabad, LB Nagar, Serilingampally, Kukatpally.
+
+MAJOR ROADS AND CONNECTIVITY
+-----------------------------
+NH-44 (National Highway 44): Connects Hyderabad to Nagpur. Passes through Secunderabad.
+  - Flood risk: HIGH near Musi River crossings at Chaderghat and Nayapul bridges.
+  - Elevation: 505–520m above sea level.
+
+NH-65 (National Highway 65): Hyderabad–Pune corridor.
+  - Flood risk: MEDIUM near Patancheru industrial area.
+
+Outer Ring Road (ORR): 158km ring road encircling the city.
+  - Flood risk: LOW (elevated construction), but underpasses flood at 50mm/hr rainfall.
+
+Inner Ring Road (IRR): Connects all major city zones.
+  - Flood risk: HIGH at Mehdipatnam, Tolichowki, and Masab Tank underpasses.
+
+BRIDGES AND CRITICAL CROSSINGS
+--------------------------------
+Chaderghat Bridge (Musi River): Critical crossing. Closes when water level > 7m.
+Nayapul Bridge (Musi River): Closes when water level > 6.5m.
+Purana Pul (Old Bridge, Musi River): Heritage structure. Closes when water level > 5m.
+Attapur Bridge: Connects south Hyderabad. Flood risk HIGH.
+Nagole Bridge: East Hyderabad. Moderate flood risk.
+
+ELEVATION DATA (meters above sea level)
+-----------------------------------------
+Banjara Hills: 580–620m (LOW flood risk)
+Jubilee Hills: 570–600m (LOW flood risk)
+Secunderabad: 505–530m (MEDIUM flood risk)
+Khairatabad: 490–510m (HIGH flood risk — near Hussain Sagar)
+LB Nagar: 480–500m (HIGH flood risk — low-lying)
+Malkajgiri: 495–515m (MEDIUM flood risk)
+Kukatpally: 500–520m (MEDIUM flood risk)
+Mehdipatnam: 485–505m (HIGH flood risk — Musi River basin)
+Tarnaka: 510–525m (MEDIUM flood risk)
+Uppal: 490–510m (HIGH flood risk)
+Dilsukhnagar: 480–498m (VERY HIGH flood risk — lowest elevation)
+Amberpet: 488–505m (HIGH flood risk)
+
+WATER BODIES
+-------------
+Hussain Sagar Lake: Central lake. Capacity 15.5 MCM. Overflow risk when level > 513.5m.
+Musi River: Flows east-west through city. Critical flood trigger at 7m gauge level.
+Osman Sagar (Gandipet): Reservoir. Capacity 3.7 TMC. Releases increase downstream risk.
+Himayat Sagar: Reservoir. Capacity 2.97 TMC.
+Mir Alam Tank: Urban lake. Overflow affects Mehdipatnam.
+Saroornagar Lake: Affects LB Nagar and Saroornagar areas.
+
+EVACUATION ROUTES
+------------------
+Primary: NH-44 northbound to Secunderabad Railway Station (capacity: 50,000 persons/hour)
+Secondary: ORR westbound to Patancheru relief camps
+Tertiary: NH-65 southbound to Shamshabad airport relief zone
+Emergency: Elevated Metro Rail corridors (pedestrian evacuation only)
+
+HELICOPTER LANDING ZONES
+--------------------------
+Begumpet Airport: Primary helipad. Coordinates: 17.4531°N, 78.4673°E
+Parade Ground, Secunderabad: Emergency LZ. Coordinates: 17.4399°N, 78.4983°E
+Lal Bahadur Stadium: Emergency LZ. Coordinates: 17.3850°N, 78.4867°E
+BHEL Township Ground: West Hyderabad LZ. Coordinates: 17.5167°N, 78.3167°E

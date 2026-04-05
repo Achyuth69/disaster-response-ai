@@ -1,0 +1,25 @@
+{
+  "name": "Disaster Response AI System",
+  "short_name": "DisasterAI",
+  "description": "World-first autonomous AI disaster response command center",
+  "start_url": "/ui/index.html",
+  "display": "standalone",
+  "background_color": "#050810",
+  "theme_color": "#ff2020",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚨</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["utilities", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Hyderabad Demo",
+      "url": "/ui/index.html#demo",
+      "description": "Launch Hyderabad flood demo"
+    }
+  ]
+}

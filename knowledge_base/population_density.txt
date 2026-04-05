@@ -1,0 +1,163 @@
+HYDERABAD POPULATION DENSITY AND VULNERABILITY DATA
+====================================================
+
+TOTAL POPULATION: 10.5 million (Greater Hyderabad Metropolitan Area)
+GHMC AREA: 650 sq km
+AVERAGE DENSITY: 18,480 persons/sq km
+
+WARD-LEVEL POPULATION DATA (High-Risk Zones)
+---------------------------------------------
+
+DILSUKHNAGAR ZONE (Zone A — Extreme Risk)
+------------------------------------------
+Ward 1: Moosarambagh
+  Population: 45,000 | Density: 52,000/sq km
+  Elderly (60+): 6,750 (15%)
+  Children (0-14): 9,900 (22%)
+  Disabled: 1,350 (3%)
+  Slum population: 18,000 (40%)
+  Vulnerable total: 36,000 (80%)
+
+Ward 2: Dilsukhnagar Main
+  Population: 38,000 | Density: 48,000/sq km
+  Elderly: 5,700 (15%)
+  Children: 8,360 (22%)
+  Disabled: 1,140 (3%)
+  Slum population: 11,400 (30%)
+  Vulnerable total: 26,600 (70%)
+
+Ward 3: Chaitanyapuri
+  Population: 42,000 | Density: 45,000/sq km
+  Elderly: 5,460 (13%)
+  Children: 9,240 (22%)
+  Disabled: 1,260 (3%)
+  Slum population: 12,600 (30%)
+  Vulnerable total: 28,560 (68%)
+
+LB NAGAR / SAROORNAGAR ZONE (Zone A — Extreme Risk)
+-----------------------------------------------------
+Ward 4: LB Nagar Central
+  Population: 65,000 | Density: 42,000/sq km
+  Elderly: 9,100 (14%)
+  Children: 14,300 (22%)
+  Disabled: 1,950 (3%)
+  Slum population: 19,500 (30%)
+  Vulnerable total: 44,850 (69%)
+
+Ward 5: Saroornagar
+  Population: 55,000 | Density: 38,000/sq km
+  Elderly: 7,700 (14%)
+  Children: 12,100 (22%)
+  Disabled: 1,650 (3%)
+  Slum population: 16,500 (30%)
+  Vulnerable total: 37,950 (69%)
+
+Ward 6: Vanasthalipuram
+  Population: 48,000 | Density: 35,000/sq km
+  Elderly: 6,240 (13%)
+  Children: 10,560 (22%)
+  Disabled: 1,440 (3%)
+  Slum population: 14,400 (30%)
+  Vulnerable total: 32,640 (68%)
+
+MEHDIPATNAM / TOLICHOWKI ZONE (Zone A — Extreme Risk)
+------------------------------------------------------
+Ward 7: Mehdipatnam
+  Population: 72,000 | Density: 55,000/sq km
+  Elderly: 10,800 (15%)
+  Children: 15,840 (22%)
+  Disabled: 2,160 (3%)
+  Slum population: 21,600 (30%)
+  Vulnerable total: 50,400 (70%)
+
+Ward 8: Tolichowki
+  Population: 58,000 | Density: 50,000/sq km
+  Elderly: 8,120 (14%)
+  Children: 12,760 (22%)
+  Disabled: 1,740 (3%)
+  Slum population: 17,400 (30%)
+  Vulnerable total: 40,020 (69%)
+
+AMBERPET / TARNAKA ZONE (Zone A — Extreme Risk)
+-------------------------------------------------
+Ward 9: Amberpet
+  Population: 52,000 | Density: 44,000/sq km
+  Elderly: 7,280 (14%)
+  Children: 11,440 (22%)
+  Disabled: 1,560 (3%)
+  Slum population: 20,800 (40%)
+  Vulnerable total: 41,080 (79%)
+
+Ward 10: Tarnaka
+  Population: 35,000 | Density: 38,000/sq km
+  Elderly: 4,900 (14%)
+  Children: 7,700 (22%)
+  Disabled: 1,050 (3%)
+  Slum population: 10,500 (30%)
+  Vulnerable total: 24,150 (69%)
+
+KHAIRATABAD / MASAB TANK ZONE (Zone B — High Risk)
+----------------------------------------------------
+Ward 11: Khairatabad
+  Population: 48,000 | Density: 40,000/sq km
+  Elderly: 6,720 (14%)
+  Children: 10,560 (22%)
+  Disabled: 1,440 (3%)
+  Slum population: 9,600 (20%)
+  Vulnerable total: 28,320 (59%)
+
+Ward 12: Masab Tank
+  Population: 42,000 | Density: 38,000/sq km
+  Elderly: 5,880 (14%)
+  Children: 9,240 (22%)
+  Disabled: 1,260 (3%)
+  Slum population: 8,400 (20%)
+  Vulnerable total: 24,780 (59%)
+
+UPPAL / BODUPPAL ZONE (Zone B — High Risk)
+-------------------------------------------
+Ward 13: Uppal
+  Population: 85,000 | Density: 36,000/sq km
+  Elderly: 10,200 (12%)
+  Children: 18,700 (22%)
+  Disabled: 2,550 (3%)
+  Slum population: 25,500 (30%)
+  Vulnerable total: 56,950 (67%)
+
+Ward 14: Boduppal
+  Population: 62,000 | Density: 30,000/sq km
+  Elderly: 7,440 (12%)
+  Children: 13,640 (22%)
+  Disabled: 1,860 (3%)
+  Slum population: 18,600 (30%)
+  Vulnerable total: 41,540 (67%)
+
+MALKAJGIRI ZONE (Zone B — High Risk)
+--------------------------------------
+Ward 15: Malkajgiri
+  Population: 55,000 | Density: 32,000/sq km
+  Elderly: 6,600 (12%)
+  Children: 12,100 (22%)
+  Disabled: 1,650 (3%)
+  Slum population: 11,000 (20%)
+  Vulnerable total: 31,350 (57%)
+
+SUMMARY — PRIORITY RANKING BY VULNERABILITY
+---------------------------------------------
+Rank 1: Mehdipatnam (Ward 7) — 72,000 pop, 70% vulnerable, Zone A
+Rank 2: LB Nagar Central (Ward 4) — 65,000 pop, 69% vulnerable, Zone A
+Rank 3: Uppal (Ward 13) — 85,000 pop, 67% vulnerable, Zone B
+Rank 4: Tolichowki (Ward 8) — 58,000 pop, 69% vulnerable, Zone A
+Rank 5: Saroornagar (Ward 5) — 55,000 pop, 69% vulnerable, Zone A
+Rank 6: Amberpet (Ward 9) — 52,000 pop, 79% vulnerable, Zone A
+Rank 7: Moosarambagh (Ward 1) — 45,000 pop, 80% vulnerable, Zone A
+Rank 8: Chaitanyapuri (Ward 3) — 42,000 pop, 68% vulnerable, Zone A
+
+SPECIAL VULNERABLE POPULATIONS
+--------------------------------
+Hospitals in flood zones: 4 (Osmania, Niloufer, Yashoda, LB Nagar Area Hospital)
+Patients requiring evacuation: ~2,800
+Old age homes in Zone A: 12 (estimated 1,800 residents)
+Orphanages in Zone A: 8 (estimated 600 children)
+Prisons in flood risk areas: Chanchalguda Central Jail (2,500 inmates)
+Schools in Zone A (potential shelters): 45
