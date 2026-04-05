@@ -22,5 +22,5 @@ RUN mkdir -p output checkpoints faiss_index logs && \
     useradd -m -u 1000 appuser && chown -R appuser:appuser /app
 USER appuser
 EXPOSE 8000
-# Use shell form so $PORT env var is expanded by the shell
-CMD python run_api.py --host 0.0.0.0 --prod
+# Shell form — $PORT is expanded by /bin/sh at runtime
+CMD ["sh", "-c", "python run_api.py --host 0.0.0.0 --prod"]
