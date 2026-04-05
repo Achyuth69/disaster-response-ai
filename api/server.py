@@ -974,7 +974,9 @@ async def global_disasters():
     Free, no API key, updated every 30 minutes.
     """
     from agents.gdacs_service import fetch_global_disasters, SEVERITY_COLORS
-    disasters = fetch_global_disasters()
+    import asyncio as _aio
+    loop = _aio.get_running_loop()
+    disasters = await loop.run_in_executor(None, fetch_global_disasters)
     return {
         "count": len(disasters),
         "fetched_at": datetime.utcnow().isoformat(),
@@ -1767,7 +1769,10 @@ async def generate_sitrep(session_token: str):
         primary_key=primary_key,
     )
 
-    result = _gen_sitrep(llm, context)
+    # Run LLM calls in thread pool — prevents blocking the async event loop
+    import asyncio as _aio
+    loop = _aio.get_running_loop()
+    result = await loop.run_in_executor(None, _gen_sitrep, llm, context)
     result["session_token"] = session_token
     result["context"] = context
     return result
@@ -1822,7 +1827,7 @@ async def manual_cleanup():
 @app.get("/api/export/{session_token}", tags=["Export"])
 async def export_report(session_token: str, fmt: str = "html"):
     """Export the final report as HTML or PDF. ?fmt=html or ?fmt=pdf"""
-    from fastapi.responses import FileResponse
+    from fastapi.responses import Response
     session = _sessions.get(session_token)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
@@ -1833,20 +1838,45 @@ async def export_report(session_token: str, fmt: str = "html"):
         raise HTTPException(status_code=404, detail="Report not available")
 
     from agents.report_exporter import export_html, export_pdf
-    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    import tempfile, os
     req = session.get("request", {})
-    base = f"output/report_{req.get('disaster_type','disaster')}_{req.get('location','location')}_{ts}"
     report_dict = report.model_dump() if hasattr(report, "model_dump") else dict(report)
+    fname = f"disaster_report_{req.get('disaster_type','report')}_{req.get('location','location')}"
 
     if fmt == "pdf":
-        path = export_pdf(report_dict, base + ".pdf")
-        media = "application/pdf"
+        # Write to temp file, read back as bytes, delete
+        with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+            tmp_path = tmp.name
+        try:
+            out_path = export_pdf(report_dict, tmp_path)
+            with open(out_path, "rb") as f:
+                content = f.read()
+            os.unlink(out_path)
+        except Exception:
+            os.unlink(tmp_path) if os.path.exists(tmp_path) else None
+            raise HTTPException(status_code=500, detail="PDF generation failed — reportlab may not be installed")
+        return Response(
+            content=content,
+            media_type="application/pdf",
+            headers={"Content-Disposition": f'attachment; filename="{fname}.pdf"'}
+        )
     else:
-        path = export_html(report_dict, base + ".html")
-        media = "text/html"
-
-    return FileResponse(path, media_type=media,
-                        headers={"Content-Disposition": f'attachment; filename="{Path(path).name}"'})
+        # HTML — generate in memory, no disk needed
+        with tempfile.NamedTemporaryFile(suffix=".html", delete=False, mode='w', encoding='utf-8') as tmp:
+            tmp_path = tmp.name
+        try:
+            export_html(report_dict, tmp_path)
+            with open(tmp_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            os.unlink(tmp_path)
+        except Exception as e:
+            os.unlink(tmp_path) if os.path.exists(tmp_path) else None
+            raise HTTPException(status_code=500, detail=f"HTML generation failed: {e}")
+        return Response(
+            content=content.encode("utf-8"),
+            media_type="text/html",
+            headers={"Content-Disposition": f'attachment; filename="{fname}.html"'}
+        )
 
 
 @app.post("/api/alert/{session_token}", tags=["Alerts"])

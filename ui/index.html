@@ -2314,8 +2314,11 @@ async function loadGlobalDisasters(){
   const cnt=document.getElementById('globalCount');
   if(cnt)cnt.textContent='Loading...';
   try{
-    const r=await fetch(`${API}/api/global-disasters`,{signal:AbortSignal.timeout(15000)});
-    if(!r.ok)return;
+    const r=await fetch(`${API}/api/global-disasters`,{signal:AbortSignal.timeout(20000)});
+    if(!r.ok){
+      const err=await r.json().catch(()=>({detail:r.statusText}));
+      throw new Error(err.detail||r.statusText);
+    }
     const d=await r.json();
     globalLoaded=true;
     if(cnt)cnt.textContent=`${d.count} active`;
@@ -2342,8 +2345,12 @@ async function loadGlobalDisasters(){
         </div>`,{className:'dark-popup'});
     });
   }catch(e){
-    if(cnt)cnt.textContent='Unavailable';
-    if(el)el.innerHTML='<div style="padding:8px;font-size:.58rem;color:var(--txt2)">GDACS feed unavailable — check internet connection</div>';
+    // Don't set globalLoaded=true on failure — allow retry
+    if(cnt)cnt.textContent='Retry ↻';
+    if(el)el.innerHTML=`<div style="padding:8px;font-size:.58rem;color:var(--txt2)">
+      GDACS feed unavailable (${e.message})<br>
+      <button onclick="globalLoaded=false;loadGlobalDisasters()" style="margin-top:6px;background:rgba(255,68,68,.15);border:1px solid rgba(255,68,68,.3);color:var(--red2);padding:3px 10px;border-radius:3px;cursor:pointer;font-family:monospace;font-size:.52rem">↻ RETRY</button>
+    </div>`;
     console.warn('Global disasters:',e.message);
   }
 }
