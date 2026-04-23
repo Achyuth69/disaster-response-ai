@@ -10,9 +10,15 @@
 An **enterprise-grade, security-hardened, multi-agent AI system** for real-time disaster response coordination. Deployable anywhere in the world. Powered by Groq (ultra-fast LLM inference) + RAG + Adaptive Chaos Simulation.
 
 ---
-
 ## 🌐 Live Demo
 
+👉 **[Open Disaster Response AI](https://disaster-response-ai.up.railway.app/ui/index.html)**
+
+Experience the live deployment of the Disaster Response AI system in action.
+
+---
+
+## 🌐 Live Local-Demo
 ```
 http://localhost:8000/ui/index.html   ← 3D Animated Dashboard
 http://localhost:8000/api/docs        ← Interactive API Docs
